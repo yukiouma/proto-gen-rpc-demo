@@ -15,6 +15,28 @@ type {{$message.MessageName}} struct {
 	{{$field.FieldName}} {{$field.FieldType}}
 	{{- end}}
 }
+
+func New{{$message.MessageName}}() *{{$message.MessageName}} {
+	return &{{$message.MessageName}}{}
+}
+
+{{range $index, $field := $message.Field}}
+func (m *{{$message.MessageName}}) Get{{$field.FieldName}}() (data {{$field.FieldType}}) {
+	if m == nil {
+		return
+	}
+	data = m.{{$field.FieldName}}
+	return
+}
+
+func (m *{{$message.MessageName}}) Set{{$field.FieldName}}(val {{$field.FieldType}}) {
+	if m == nil {
+		return
+	}
+	m.{{$field.FieldName}} = val
+}
+{{end}}
+
 {{end}}
 
 

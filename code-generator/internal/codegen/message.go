@@ -1,3 +1,4 @@
+// explain the messages part of .proto file
 package codegen
 
 import (
@@ -45,9 +46,9 @@ func buildField(field *protogen.Field) (*Field, error) {
 	pbField.FieldName = field.GoName
 	desc := field.Desc
 	if desc.IsList() {
-
+		// TODO
 	} else if desc.IsMap() {
-
+		// TODO
 	} else if desc.Message() != nil {
 		pbField.FieldType = "*" + field.Message.GoIdent.GoName
 	} else {

@@ -1,3 +1,4 @@
+// explain the services part of .proto file
 package codegen
 
 import "google.golang.org/protobuf/compiler/protogen"
