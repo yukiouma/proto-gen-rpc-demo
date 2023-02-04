@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package demo;
+
+option go_package = "demo-project/api/demo/v1";
+
+service Demo {
+  rpc Login(LoginRequest) returns (LoginReply) {};
+  rpc Logout(LogoutRequest) returns (LogoutReply) {};
+}
+
+message LoginRequest {
+  string account = 1;
+  string password = 2;
+}
+
+message LoginReply {
+  User user = 1;
+}
+
+message LogoutRequest {}
+
+message LogoutReply {}
+
+message User {
+  int64 id = 1;
+  string name = 2;
+  bool locked = 3;
+}
