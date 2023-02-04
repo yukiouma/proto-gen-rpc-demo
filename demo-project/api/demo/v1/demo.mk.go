@@ -12,20 +12,130 @@ type LoginRequest struct {
 	Password string
 }
 
+func NewLoginRequest() *LoginRequest {
+	return &LoginRequest{}
+}
+
+func (m *LoginRequest) GetAccount() (data string) {
+	if m == nil {
+		return
+	}
+	data = m.Account
+	return
+}
+
+func (m *LoginRequest) SetAccount(val string) {
+	if m == nil {
+		return
+	}
+	m.Account = val
+}
+
+func (m *LoginRequest) GetPassword() (data string) {
+	if m == nil {
+		return
+	}
+	data = m.Password
+	return
+}
+
+func (m *LoginRequest) SetPassword(val string) {
+	if m == nil {
+		return
+	}
+	m.Password = val
+}
+
 type LoginReply struct {
 	User *User
+}
+
+func NewLoginReply() *LoginReply {
+	return &LoginReply{}
+}
+
+func (m *LoginReply) GetUser() (data *User) {
+	if m == nil {
+		return
+	}
+	data = m.User
+	return
+}
+
+func (m *LoginReply) SetUser(val *User) {
+	if m == nil {
+		return
+	}
+	m.User = val
 }
 
 type LogoutRequest struct {
 }
 
+func NewLogoutRequest() *LogoutRequest {
+	return &LogoutRequest{}
+}
+
 type LogoutReply struct {
+}
+
+func NewLogoutReply() *LogoutReply {
+	return &LogoutReply{}
 }
 
 type User struct {
 	Id     int64
 	Name   string
 	Locked bool
+}
+
+func NewUser() *User {
+	return &User{}
+}
+
+func (m *User) GetId() (data int64) {
+	if m == nil {
+		return
+	}
+	data = m.Id
+	return
+}
+
+func (m *User) SetId(val int64) {
+	if m == nil {
+		return
+	}
+	m.Id = val
+}
+
+func (m *User) GetName() (data string) {
+	if m == nil {
+		return
+	}
+	data = m.Name
+	return
+}
+
+func (m *User) SetName(val string) {
+	if m == nil {
+		return
+	}
+	m.Name = val
+}
+
+func (m *User) GetLocked() (data bool) {
+	if m == nil {
+		return
+	}
+	data = m.Locked
+	return
+}
+
+func (m *User) SetLocked(val bool) {
+	if m == nil {
+		return
+	}
+	m.Locked = val
 }
 
 type DemoServiceInterface interface {

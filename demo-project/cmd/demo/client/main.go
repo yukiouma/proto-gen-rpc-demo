@@ -21,44 +21,44 @@ func main() {
 	if err != nil {
 		log.Fatalf("[ERROR]: failed to connect server because: %v", err)
 	}
-	loginReq = &v1.LoginRequest{Account: "a", Password: "123"}
-	loginRes = &v1.LoginReply{}
+	loginReq = v1.NewLoginRequest()
+	loginReq.SetAccount("a")
+	loginReq.SetPassword("123")
+	loginRes = v1.NewLoginReply()
 	if err := client.Login(loginReq, loginRes); err != nil {
 		log.Fatalf("[ERROR]: login failed because: %v", err)
 	}
 	log.Printf("[INFO]: welcome, %v", loginRes.User.Name)
 
-	logoutReq = &v1.LogoutRequest{}
-	logoutRes = &v1.LogoutReply{}
+	logoutReq = v1.NewLogoutRequest()
+	logoutRes = v1.NewLogoutReply()
 	if err := client.Logout(logoutReq, logoutRes); err != nil {
 		log.Fatalf("[ERROR]: logout failed because: %v", err)
 	}
 
 	log.Printf("[INFO]: bye, %v", loginRes.User.Name)
 
-	loginReq = &v1.LoginRequest{Account: "b", Password: "456"}
-	loginRes = &v1.LoginReply{}
+	loginReq = v1.NewLoginRequest()
+	loginReq.SetAccount("b")
+	loginReq.SetPassword("456")
+	loginRes = v1.NewLoginReply()
 	if err := client.Login(loginReq, loginRes); err != nil {
 		log.Fatalf("[ERROR]: login failed because: %v", err)
 	}
 	log.Printf("[INFO]: welcome, %v", loginRes.User.Name)
 
-	logoutReq = &v1.LogoutRequest{}
-	logoutRes = &v1.LogoutReply{}
+	logoutReq = v1.NewLogoutRequest()
+	logoutRes = v1.NewLogoutReply()
 	if err := client.Logout(logoutReq, logoutRes); err != nil {
 		log.Fatalf("[ERROR]: logout failed because: %v", err)
 	}
 
 	log.Printf("[INFO]: bye, %v", loginRes.User.Name)
 
-	loginReq = &v1.LoginRequest{Account: "b", Password: "1456"}
-	loginRes = &v1.LoginReply{}
-	if err := client.Login(loginReq, loginRes); err != nil {
-		log.Fatalf("[ERROR]: login failed because: %v", err)
-	}
-
-	loginReq = &v1.LoginRequest{Account: "c", Password: "1456"}
-	loginRes = &v1.LoginReply{}
+	loginReq = v1.NewLoginRequest()
+	loginReq.SetAccount("b")
+	loginReq.SetPassword("1456")
+	loginRes = v1.NewLoginReply()
 	if err := client.Login(loginReq, loginRes); err != nil {
 		log.Fatalf("[ERROR]: login failed because: %v", err)
 	}
