@@ -43,7 +43,8 @@ func buildFields(fields []*protogen.Field) ([]*Field, error) {
 
 func buildField(field *protogen.Field) (*Field, error) {
 	pbField := &Field{}
-	pbField.FieldName = field.GoName
+	pbField.PublicFieldName = field.GoName
+	pbField.PrivateFieldName = publicFieldName2PrivateFieldName(pbField.PublicFieldName)
 	desc := field.Desc
 	if desc.IsList() {
 		// TODO
@@ -79,4 +80,19 @@ func kindMapper(in string) (out string) {
 		out = "any"
 	}
 	return
+}
+
+// transfer public field name to priviate field name
+//
+// for example: publicFieldName2PrivateFieldName("User") = user
+func publicFieldName2PrivateFieldName(origin string) string {
+	size := len(origin)
+	if size == 0 {
+		return ""
+	}
+	firstChar := origin[0]
+	if firstChar > 64 && firstChar < 91 {
+		return string(firstChar+32) + origin[1:]
+	}
+	return origin
 }

@@ -23,6 +23,7 @@ type Message struct {
 }
 
 type Field struct {
-	FieldName string
-	FieldType string
+	PublicFieldName  string
+	PrivateFieldName string
+	FieldType        string
 }

@@ -12,7 +12,7 @@ import (
 {{range $index, $message := .MessageList}}
 type {{$message.MessageName}} struct {
 	{{- range $index, $field := $message.Field}}
-	{{$field.FieldName}} {{$field.FieldType}}
+	{{$field.PrivateFieldName}} {{$field.FieldType}}
 	{{- end}}
 }
 
@@ -21,19 +21,19 @@ func New{{$message.MessageName}}() *{{$message.MessageName}} {
 }
 
 {{range $index, $field := $message.Field}}
-func (m *{{$message.MessageName}}) Get{{$field.FieldName}}() (data {{$field.FieldType}}) {
+func (m *{{$message.MessageName}}) {{$field.PublicFieldName}}() (data {{$field.FieldType}}) {
 	if m == nil {
 		return
 	}
-	data = m.{{$field.FieldName}}
+	data = m.{{$field.PrivateFieldName}}
 	return
 }
 
-func (m *{{$message.MessageName}}) Set{{$field.FieldName}}(val {{$field.FieldType}}) {
+func (m *{{$message.MessageName}}) Set{{$field.PublicFieldName}}(val {{$field.FieldType}}) {
 	if m == nil {
 		return
 	}
-	m.{{$field.FieldName}} = val
+	m.{{$field.PrivateFieldName}} = val
 }
 {{end}}
 
