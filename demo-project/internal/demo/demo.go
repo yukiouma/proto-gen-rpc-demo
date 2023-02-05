@@ -35,7 +35,7 @@ func (d *demo) Login(in *v1.LoginRequest, out *v1.LoginReply) error {
 	if in == nil {
 		return fmt.Errorf("[ERROR]: invalid request")
 	}
-	acc, pw := in.Account, in.Password
+	acc, pw := in.Account(), in.Password()
 	user, ok := d.data[acc]
 	if !ok {
 		return fmt.Errorf("[ERROR]: invalid user")
@@ -43,11 +43,11 @@ func (d *demo) Login(in *v1.LoginRequest, out *v1.LoginReply) error {
 	if user.Password != pw {
 		return fmt.Errorf("[ERROR]: invalid password")
 	}
-	out.User = &v1.User{
-		Id:     int64(user.Id),
-		Name:   user.Name,
-		Locked: user.Locked,
-	}
+	replyUser := v1.NewUser()
+	replyUser.SetId(int64(user.Id))
+	replyUser.SetName(user.Name)
+	replyUser.SetLocked(user.Locked)
+	out.SetUser(replyUser)
 	return nil
 }
 

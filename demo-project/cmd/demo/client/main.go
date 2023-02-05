@@ -28,7 +28,7 @@ func main() {
 	if err := client.Login(loginReq, loginRes); err != nil {
 		log.Fatalf("[ERROR]: login failed because: %v", err)
 	}
-	log.Printf("[INFO]: welcome, %v", loginRes.User.Name)
+	log.Printf("[INFO]: welcome, %v", loginRes.User().Name())
 
 	logoutReq = v1.NewLogoutRequest()
 	logoutRes = v1.NewLogoutReply()
@@ -36,7 +36,7 @@ func main() {
 		log.Fatalf("[ERROR]: logout failed because: %v", err)
 	}
 
-	log.Printf("[INFO]: bye, %v", loginRes.User.Name)
+	log.Printf("[INFO]: bye, %v", loginRes.User().Name())
 
 	loginReq = v1.NewLoginRequest()
 	loginReq.SetAccount("b")
@@ -45,7 +45,7 @@ func main() {
 	if err := client.Login(loginReq, loginRes); err != nil {
 		log.Fatalf("[ERROR]: login failed because: %v", err)
 	}
-	log.Printf("[INFO]: welcome, %v", loginRes.User.Name)
+	log.Printf("[INFO]: welcome, %v", loginRes.User().Name())
 
 	logoutReq = v1.NewLogoutRequest()
 	logoutRes = v1.NewLogoutReply()
@@ -53,7 +53,7 @@ func main() {
 		log.Fatalf("[ERROR]: logout failed because: %v", err)
 	}
 
-	log.Printf("[INFO]: bye, %v", loginRes.User.Name)
+	log.Printf("[INFO]: bye, %v", loginRes.User().Name())
 
 	loginReq = v1.NewLoginRequest()
 	loginReq.SetAccount("b")

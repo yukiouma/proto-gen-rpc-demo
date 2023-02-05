@@ -8,19 +8,19 @@ import (
 )
 
 type LoginRequest struct {
-	Account  string
-	Password string
+	account  string
+	password string
 }
 
 func NewLoginRequest() *LoginRequest {
 	return &LoginRequest{}
 }
 
-func (m *LoginRequest) GetAccount() (data string) {
+func (m *LoginRequest) Account() (data string) {
 	if m == nil {
 		return
 	}
-	data = m.Account
+	data = m.account
 	return
 }
 
@@ -28,14 +28,14 @@ func (m *LoginRequest) SetAccount(val string) {
 	if m == nil {
 		return
 	}
-	m.Account = val
+	m.account = val
 }
 
-func (m *LoginRequest) GetPassword() (data string) {
+func (m *LoginRequest) Password() (data string) {
 	if m == nil {
 		return
 	}
-	data = m.Password
+	data = m.password
 	return
 }
 
@@ -43,22 +43,22 @@ func (m *LoginRequest) SetPassword(val string) {
 	if m == nil {
 		return
 	}
-	m.Password = val
+	m.password = val
 }
 
 type LoginReply struct {
-	User *User
+	user *User
 }
 
 func NewLoginReply() *LoginReply {
 	return &LoginReply{}
 }
 
-func (m *LoginReply) GetUser() (data *User) {
+func (m *LoginReply) User() (data *User) {
 	if m == nil {
 		return
 	}
-	data = m.User
+	data = m.user
 	return
 }
 
@@ -66,7 +66,7 @@ func (m *LoginReply) SetUser(val *User) {
 	if m == nil {
 		return
 	}
-	m.User = val
+	m.user = val
 }
 
 type LogoutRequest struct {
@@ -84,20 +84,20 @@ func NewLogoutReply() *LogoutReply {
 }
 
 type User struct {
-	Id     int64
-	Name   string
-	Locked bool
+	id     int64
+	name   string
+	locked bool
 }
 
 func NewUser() *User {
 	return &User{}
 }
 
-func (m *User) GetId() (data int64) {
+func (m *User) Id() (data int64) {
 	if m == nil {
 		return
 	}
-	data = m.Id
+	data = m.id
 	return
 }
 
@@ -105,14 +105,14 @@ func (m *User) SetId(val int64) {
 	if m == nil {
 		return
 	}
-	m.Id = val
+	m.id = val
 }
 
-func (m *User) GetName() (data string) {
+func (m *User) Name() (data string) {
 	if m == nil {
 		return
 	}
-	data = m.Name
+	data = m.name
 	return
 }
 
@@ -120,14 +120,14 @@ func (m *User) SetName(val string) {
 	if m == nil {
 		return
 	}
-	m.Name = val
+	m.name = val
 }
 
-func (m *User) GetLocked() (data bool) {
+func (m *User) Locked() (data bool) {
 	if m == nil {
 		return
 	}
-	data = m.Locked
+	data = m.locked
 	return
 }
 
@@ -135,7 +135,7 @@ func (m *User) SetLocked(val bool) {
 	if m == nil {
 		return
 	}
-	m.Locked = val
+	m.locked = val
 }
 
 type DemoServiceInterface interface {
